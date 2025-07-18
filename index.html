@@ -5,54 +5,52 @@
   <title>School Budget Simulation</title>
 </head>
 <body>
+  <h3>🎮 School Budget Simulation</h3>
+  <p>Imagine you're in charge of your school's budget. You have <strong>$100</strong> to allocate across five key categories. Slide to adjust how much money you would spend on each. Your total must equal $100!</p>
 
-<h3>🎮 School Budget Simulation</h3>
-<p>Imagine you're in charge of your school's budget. You have <strong>$100</strong> to allocate across five key categories. Slide to adjust how much money you would spend on each. Your total must equal $100!</p>
+  <div>
+    <label>👩‍🏫 Teacher Salaries: $<span id="salariesVal">20</span></label><br>
+    <input type="range" min="0" max="100" value="20" id="salaries" oninput="updateValues()"><br><br>
 
-<div>
-  <label>👩‍🏫 Teacher Salaries: $<span id="salariesVal">20</span></label><br>
-  <input type="range" min="0" max="100" value="20" id="salaries" oninput="updateValues()"><br><br>
+    <label>📚 Classroom Supplies: $<span id="suppliesVal">20</span></label><br>
+    <input type="range" min="0" max="100" value="20" id="supplies" oninput="updateValues()"><br><br>
 
-  <label>📚 Classroom Supplies: $<span id="suppliesVal">20</span></label><br>
-  <input type="range" min="0" max="100" value="20" id="supplies" oninput="updateValues()"><br><br>
+    <label>🏫 Facilities (like heating, plumbing, gym): $<span id="facilitiesVal">20</span></label><br>
+    <input type="range" min="0" max="100" value="20" id="facilities" oninput="updateValues()"><br><br>
 
-  <label>🏫 Facilities (like heating, plumbing, gym): $<span id="facilitiesVal">20</span></label><br>
-  <input type="range" min="0" max="100" value="20" id="facilities" oninput="updateValues()"><br><br>
+    <label>🧠 Student Support Services (counselors, specialists): $<span id="supportVal">20</span></label><br>
+    <input type="range" min="0" max="100" value="20" id="support" oninput="updateValues()"><br><br>
 
-  <label>🧠 Student Support Services (counselors, specialists): $<span id="supportVal">20</span></label><br>
-  <input type="range" min="0" max="100" value="20" id="support" oninput="updateValues()"><br><br>
+    <label>🎨 Enrichment & Activities (sports, arts, field trips): $<span id="enrichmentVal">20</span></label><br>
+    <input type="range" min="0" max="100" value="20" id="enrichment" oninput="updateValues()"><br><br>
 
-  <label>🎨 Enrichment & Activities (sports, arts, field trips): $<span id="enrichmentVal">20</span></label><br>
-  <input type="range" min="0" max="100" value="20" id="enrichment" oninput="updateValues()"><br><br>
+    <h4>Total: $<span id="totalVal">100</span></h4>
+    <p id="warning" style="color:red; display:none;">🚨 Your total must be exactly $100!</p>
+  </div>
 
-  <h4>Total: $<span id="totalVal">100</span></h4>
-  <p id="warning" style="color:red; display:none;">🚨 Your total must be exactly $100!</p>
-</div>
+  <script>
+    function updateValues() {
+      let salaries = parseInt(document.getElementById('salaries').value);
+      let supplies = parseInt(document.getElementById('supplies').value);
+      let facilities = parseInt(document.getElementById('facilities').value);
+      let support = parseInt(document.getElementById('support').value);
+      let enrichment = parseInt(document.getElementById('enrichment').value);
 
-<script>
-function updateValues() {
-  let salaries = parseInt(document.getElementById('salaries').value);
-  let supplies = parseInt(document.getElementById('supplies').value);
-  let facilities = parseInt(document.getElementById('facilities').value);
-  let support = parseInt(document.getElementById('support').value);
-  let enrichment = parseInt(document.getElementById('enrichment').value);
+      let total = salaries + supplies + facilities + support + enrichment;
 
-  let total = salaries + supplies + facilities + support + enrichment;
+      document.getElementById('salariesVal').innerText = salaries;
+      document.getElementById('suppliesVal').innerText = supplies;
+      document.getElementById('facilitiesVal').innerText = facilities;
+      document.getElementById('supportVal').innerText = support;
+      document.getElementById('enrichmentVal').innerText = enrichment;
+      document.getElementById('totalVal').innerText = total;
 
-  document.getElementById('salariesVal').innerText = salaries;
-  document.getElementById('suppliesVal').innerText = supplies;
-  document.getElementById('facilitiesVal').innerText = facilities;
-  document.getElementById('supportVal').innerText = support;
-  document.getElementById('enrichmentVal').innerText = enrichment;
-  document.getElementById('totalVal').innerText = total;
-
-  if (total !== 100) {
-    document.getElementById('warning').style.display = 'block';
-  } else {
-    document.getElementById('warning').style.display = 'none';
-  }
-}
-</script>
-
+      if (total !== 100) {
+        document.getElementById('warning').style.display = 'block';
+      } else {
+        document.getElementById('warning').style.display = 'none';
+      }
+    }
+  </script>
 </body>
 </html>
