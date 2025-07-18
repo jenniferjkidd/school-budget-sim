@@ -1,70 +1,58 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.6">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-  </style>
+  <meta charset="UTF-8">
+  <title>School Budget Simulation</title>
 </head>
 <body>
-<p class="p1">from IPython.display import display, HTML</p>
-<p class="p2"><br></p>
-<p class="p1"># Creating an HTML + JavaScript simulation interface using sliders</p>
-<p class="p1">html_code = """</p>
-<p class="p1">&lt;h3&gt;🎮 School Budget Simulation&lt;/h3&gt;</p>
-<p class="p1">&lt;p&gt;Imagine you're in charge of your school's budget. You have &lt;strong&gt;$100&lt;/strong&gt; to allocate across five key categories. Slide to adjust how much money you would spend on each. Your total must equal $100!&lt;/p&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;label&gt;👩‍🏫 Teacher Salaries: $&lt;span id="salariesVal"&gt;20&lt;/span&gt;&lt;/label&gt;&lt;br&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;input type="range" min="0" max="100" value="20" id="salaries" oninput="updateValues()"&gt;&lt;br&gt;&lt;br&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;label&gt;📚 Classroom Supplies: $&lt;span id="suppliesVal"&gt;20&lt;/span&gt;&lt;/label&gt;&lt;br&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;input type="range" min="0" max="100" value="20" id="supplies" oninput="updateValues()"&gt;&lt;br&gt;&lt;br&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;label&gt;🏫 Facilities (like heating, plumbing, gym): $&lt;span id="facilitiesVal"&gt;20&lt;/span&gt;&lt;/label&gt;&lt;br&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;input type="range" min="0" max="100" value="20" id="facilities" oninput="updateValues()"&gt;&lt;br&gt;&lt;br&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;label&gt;🧠 Student Support Services (counselors, specialists): $&lt;span id="supportVal"&gt;20&lt;/span&gt;&lt;/label&gt;&lt;br&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;input type="range" min="0" max="100" value="20" id="support" oninput="updateValues()"&gt;&lt;br&gt;&lt;br&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;label&gt;🎨 Enrichment &amp; Activities (sports, arts, field trips): $&lt;span id="enrichmentVal"&gt;20&lt;/span&gt;&lt;/label&gt;&lt;br&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;input type="range" min="0" max="100" value="20" id="enrichment" oninput="updateValues()"&gt;&lt;br&gt;&lt;br&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;h4&gt;Total: $&lt;span id="totalVal"&gt;100&lt;/span&gt;&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;p id="warning" style="color:red; display:none;"&gt;🚨 Your total must be exactly $100!&lt;/p&gt;</p>
-<p class="p1">&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;script&gt;</p>
-<p class="p1">function updateValues() {</p>
-<p class="p1"><span class="Apple-converted-space">  </span>let salaries = parseInt(document.getElementById('salaries').value);</p>
-<p class="p1"><span class="Apple-converted-space">  </span>let supplies = parseInt(document.getElementById('supplies').value);</p>
-<p class="p1"><span class="Apple-converted-space">  </span>let facilities = parseInt(document.getElementById('facilities').value);</p>
-<p class="p1"><span class="Apple-converted-space">  </span>let support = parseInt(document.getElementById('support').value);</p>
-<p class="p1"><span class="Apple-converted-space">  </span>let enrichment = parseInt(document.getElementById('enrichment').value);</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>let total = salaries + supplies + facilities + support + enrichment;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('salariesVal').innerText = salaries;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('suppliesVal').innerText = supplies;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('facilitiesVal').innerText = facilities;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('supportVal').innerText = support;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('enrichmentVal').innerText = enrichment;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('totalVal').innerText = total;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>if (total !== 100) {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('warning').style.display = 'block';</p>
-<p class="p1"><span class="Apple-converted-space">  </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('warning').style.display = 'none';</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1">}</p>
-<p class="p1">&lt;/script&gt;</p>
-<p class="p1">"""</p>
-<p class="p2"><br></p>
-<p class="p1">display(HTML(html_code))</p>
+
+<h3>🎮 School Budget Simulation</h3>
+<p>Imagine you're in charge of your school's budget. You have <strong>$100</strong> to allocate across five key categories. Slide to adjust how much money you would spend on each. Your total must equal $100!</p>
+
+<div>
+  <label>👩‍🏫 Teacher Salaries: $<span id="salariesVal">20</span></label><br>
+  <input type="range" min="0" max="100" value="20" id="salaries" oninput="updateValues()"><br><br>
+
+  <label>📚 Classroom Supplies: $<span id="suppliesVal">20</span></label><br>
+  <input type="range" min="0" max="100" value="20" id="supplies" oninput="updateValues()"><br><br>
+
+  <label>🏫 Facilities (like heating, plumbing, gym): $<span id="facilitiesVal">20</span></label><br>
+  <input type="range" min="0" max="100" value="20" id="facilities" oninput="updateValues()"><br><br>
+
+  <label>🧠 Student Support Services (counselors, specialists): $<span id="supportVal">20</span></label><br>
+  <input type="range" min="0" max="100" value="20" id="support" oninput="updateValues()"><br><br>
+
+  <label>🎨 Enrichment & Activities (sports, arts, field trips): $<span id="enrichmentVal">20</span></label><br>
+  <input type="range" min="0" max="100" value="20" id="enrichment" oninput="updateValues()"><br><br>
+
+  <h4>Total: $<span id="totalVal">100</span></h4>
+  <p id="warning" style="color:red; display:none;">🚨 Your total must be exactly $100!</p>
+</div>
+
+<script>
+function updateValues() {
+  let salaries = parseInt(document.getElementById('salaries').value);
+  let supplies = parseInt(document.getElementById('supplies').value);
+  let facilities = parseInt(document.getElementById('facilities').value);
+  let support = parseInt(document.getElementById('support').value);
+  let enrichment = parseInt(document.getElementById('enrichment').value);
+
+  let total = salaries + supplies + facilities + support + enrichment;
+
+  document.getElementById('salariesVal').innerText = salaries;
+  document.getElementById('suppliesVal').innerText = supplies;
+  document.getElementById('facilitiesVal').innerText = facilities;
+  document.getElementById('supportVal').innerText = support;
+  document.getElementById('enrichmentVal').innerText = enrichment;
+  document.getElementById('totalVal').innerText = total;
+
+  if (total !== 100) {
+    document.getElementById('warning').style.display = 'block';
+  } else {
+    document.getElementById('warning').style.display = 'none';
+  }
+}
+</script>
+
 </body>
 </html>
